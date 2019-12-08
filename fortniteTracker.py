@@ -30,11 +30,10 @@ def __get_br_match_stats():
 
 if __name__ == "__main__":
 
-    epicname = "jwg660"
     profile = 'pc'
 
     if os.path.isfile('credentials.txt'):
-        apikey = open('credentials.txt').read().strip()
+        apikey, epicname = open('credentials.txt').read().strip().split(',')
     else:
         print("Cannot find credentials file")
         sys.exit(1)
@@ -45,7 +44,7 @@ if __name__ == "__main__":
     # ======================
     # Get the lifetime stats
     # ======================
-    lt_stats = player_stats['lifeTimeStats']
+    lifetime_stats = player_stats['lifeTimeStats']
 
     # =============================
     # Create a new blank dictionary
@@ -60,7 +59,7 @@ if __name__ == "__main__":
     # result in 12 dictionary objects.
     # ========================================================
 
-    for dicts in lt_stats:
+    for dicts in lifetime_stats:
         dicts_by_key[dicts['key']] = dicts
 
     # ============================================================
